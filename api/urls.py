@@ -33,6 +33,6 @@ urlpatterns = [
     path('subjects/<int:pk>/', SubjectDetailView.as_view()),
     path('tasks/', TaskView.as_view()),
     path('tasks/<int:pk>/', TaskDetailView.as_view()),
-    path('student/<int:pk>/tasks/', StudentTaskView.as_view()),
+    path('students/<int:pk>/tasks/', StudentTaskView.as_view()),
 
 ]
