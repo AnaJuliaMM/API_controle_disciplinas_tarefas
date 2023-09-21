@@ -14,7 +14,7 @@ class StudentModel (models.Model):
 
     """
     name = models.CharField(max_length=255, blank=False) 
-    email = models.CharField(max_length=150, blank=False)
+    email = models.EmailField(unique=True, blank=False)
 
     def __str__(self):
         #Returns a string description of the entity
