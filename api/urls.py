@@ -20,12 +20,20 @@ from .views.students.studentView import StudentView
 from .views.students.studentsDetailView import StudentDetailView
 from .views.subjects.subjectView import SubjectView
 from .views.subjects.subjectDetailView import SubjectDetailView
+from .views.tasks.taskView import TaskView
+from .views.tasks.taskDetailView import TaskDetailView
+from .views.student_taks.studentTaskView import StudentTaskView
+
 
 
 urlpatterns = [
     path('students/', StudentView.as_view()),
     path('students/<int:pk>/', StudentDetailView.as_view()),
     path('subjects/', SubjectView.as_view()),
-    path('subjects/<int:pk>/', SubjectDetailView.as_view())
+    path('subjects/<int:pk>/', SubjectDetailView.as_view()),
+    path('tasks/', TaskView.as_view()),
+    path('tasks/<int:pk>/', TaskDetailView.as_view()),
+    path('student/<int:pk>/tasks/', StudentTaskView.as_view()),
+
 
 ]
