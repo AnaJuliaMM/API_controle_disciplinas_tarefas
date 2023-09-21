@@ -62,7 +62,7 @@ class SubjectDetailView(APIView):
             return Response({"message": "Subject updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
         except:       
             #In case of exception, generic message printed
-            return Response({"message": "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Subject could not be updated "}, status=status.HTTP_400_BAD_REQUEST)
 
 
     def patch(self, request, pk, format=None):
@@ -85,7 +85,7 @@ class SubjectDetailView(APIView):
             return Response({"message": "Subject updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
         except:       
             #In case of exception, generic message printed
-            return Response({"message": "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Subject could not be updated"}, status=status.HTTP_400_BAD_REQUEST)
 
           
     def delete(self, request, pk, format=None):
@@ -107,5 +107,5 @@ class SubjectDetailView(APIView):
             return Response({"message": "Subject deleted sucessfully", "data": serializer}, status=status.HTTP_200_OK)
         except:       
             #In case of exception, generic message printed
-            return Response({"message": "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Subject could not be deleted"}, status=status.HTTP_400_BAD_REQUEST)
 

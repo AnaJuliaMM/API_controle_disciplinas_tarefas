@@ -38,6 +38,6 @@ class SubjectView(APIView):
             # Return the objects serialized and a sucess message
             return Response({"message": "All subjects returned", "data": serializer.data }, status=status.HTTP_200_OK)
         except:
-            return Response({"message": "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Failed to get objects"}, status=status.HTTP_400_BAD_REQUEST)
 
 

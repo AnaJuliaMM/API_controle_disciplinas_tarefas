@@ -23,7 +23,7 @@ class StudentView(APIView):
             serializer.save()
             return Response({"message": "Student created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
         except:
-            return Response({"message": "Failed to create"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Failed to create object"}, status=status.HTTP_400_BAD_REQUEST)
             
     
     def get(self, request, format=None):
@@ -38,6 +38,6 @@ class StudentView(APIView):
             # Return the objects serialized and a sucess message
             return Response({"message": "All students returned", "data": serializer.data }, status=status.HTTP_200_OK)
         except:
-            return Response({"message": "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Failed to get objects"}, status=status.HTTP_400_BAD_REQUEST)
 
 

@@ -65,7 +65,7 @@ class TaskDetailView(APIView):
             return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
         except:       
             #In case of exception, generic message printed
-            return Response({"message": "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Task could not be updated"}, status=status.HTTP_400_BAD_REQUEST)
 
 
     def patch(self, request, pk, format=None):
@@ -76,19 +76,19 @@ class TaskDetailView(APIView):
             pk : a value that represents the object pk
 
         """
-        # try:
-        #Get a student by its pk
-        task = self.get_object(pk, TaskModel)
-        #Serielize it and update with the request data received
-        serializer = TaskSerializer(task, data=request.data, partial=True)
-        #Validate the data object
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        #Return a sucess message and the object updated
-        return Response({"message": "Subject updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
-        # except:       
-        #     #In case of exception, generic message printed
-        #     return Response({"message": "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            #Get a student by its pk
+            task = self.get_object(pk, TaskModel)
+            #Serielize it and update with the request data received
+            serializer = TaskSerializer(task, data=request.data, partial=True)
+            #Validate the data object
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            #Return a sucess message and the object updated
+            return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+        except:       
+            #In case of exception, generic message printed
+            return Response({"message": "Task could not be updated"}, status=status.HTTP_400_BAD_REQUEST)
 
           
     def delete(self, request, pk, format=None):
@@ -110,5 +110,5 @@ class TaskDetailView(APIView):
             return Response({"message": "Task deleted sucessfully", "data": serializer}, status=status.HTTP_200_OK)
         except:       
             #In case of exception, generic message printed
-            return Response({"message": "Failed"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Task could not be deleted"}, status=status.HTTP_400_BAD_REQUEST)
 
