@@ -29,15 +29,16 @@ class TaskView(APIView):
         
         """
         try:
-            student = self.get_object(request.data.get("student"), StudentModel)
             #Get the data from the request and serialize it
             serializer = TaskSerializer(data=request.data)
             #Validete the data serialized
-            serializer.is_valid(raise_exception=True)
-            #Save the new object in the database
-            serializer.save(student=student)
-            return Response({"message": "Task created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
-        except:
+            if serializer.is_valid():
+                student = self.get_object(request.data.get("student"), StudentModel)
+                #Save the new object in the database
+                serializer.save(student=student)
+                return Response({"message": "Task created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
+            return Response({"message": "Failed", "detail": serializer.errors},  status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
             return Response({"message": "Failed to create object"}, status=status.HTTP_400_BAD_REQUEST)
             
     

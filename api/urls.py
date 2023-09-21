@@ -35,5 +35,4 @@ urlpatterns = [
     path('tasks/<int:pk>/', TaskDetailView.as_view()),
     path('student/<int:pk>/tasks/', StudentTaskView.as_view()),
 
-
 ]

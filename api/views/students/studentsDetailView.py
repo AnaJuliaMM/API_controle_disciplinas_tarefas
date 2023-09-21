@@ -56,10 +56,11 @@ class StudentDetailView(APIView):
             #Serielize it and update with the request data received
             serializer = StudentSerializer(student, data=request.data)
             #Validate the data object
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            #Return a sucess message and the object updated
-            return Response({"message": "Student updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            if serializer.is_valid():
+                serializer.save()
+                #Return a sucess message and the object updated
+                return Response({"message": "Student updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            return Response({"message": "Failed", "detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         except:       
             #In case of exception, generic message printed
             return Response({"message": "Student could not be updated"}, status=status.HTTP_400_BAD_REQUEST)
@@ -79,10 +80,11 @@ class StudentDetailView(APIView):
             #Serielize it and update with the request data received
             serializer = StudentSerializer(student, data=request.data, partial=True)
             #Validate the data object
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            #Return a sucess message and the object updated
-            return Response({"message": "Student updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            if serializer.is_valid():
+                serializer.save()
+                #Return a sucess message and the object updated
+                return Response({"message": "Student updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            return Response({"message": "Failed", "detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         except:       
             #In case of exception, generic message printed
             return Response({"message": "Student could not be updated"}, status=status.HTTP_400_BAD_REQUEST)

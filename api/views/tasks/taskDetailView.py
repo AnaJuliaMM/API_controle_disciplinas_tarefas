@@ -53,16 +53,17 @@ class TaskDetailView(APIView):
 
         """
         try:
-            student = self.get_object(request.data.get("student"), StudentModel)
             #Get a student by its pk
             task = self.get_object(pk, TaskModel)
             #Serielize it and update with the request data received
             serializer = TaskSerializer(task, data=request.data)
             #Validate the data object
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            #Return a sucess message and the object updated
-            return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            if serializer.is_valid():
+                student = self.get_object(request.data.get("student"), StudentModel)
+                serializer.save(student=student)
+                #Return a sucess message and the object updated
+                return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            return Response({"message": "Failed", "detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         except:       
             #In case of exception, generic message printed
             return Response({"message": "Task could not be updated"}, status=status.HTTP_400_BAD_REQUEST)
@@ -82,10 +83,12 @@ class TaskDetailView(APIView):
             #Serielize it and update with the request data received
             serializer = TaskSerializer(task, data=request.data, partial=True)
             #Validate the data object
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            #Return a sucess message and the object updated
-            return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            if serializer.is_valid():
+                student = self.get_object(request.data.get("student"), StudentModel)
+                serializer.save(student=student)
+                #Return a sucess message and the object updated
+                return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            return Response({"message": "Failed", "detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         except:       
             #In case of exception, generic message printed
             return Response({"message": "Task could not be updated"}, status=status.HTTP_400_BAD_REQUEST)

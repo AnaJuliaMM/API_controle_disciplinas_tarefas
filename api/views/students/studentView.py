@@ -18,10 +18,12 @@ class StudentView(APIView):
             #Get the data from the request and serialize it
             serializer = StudentSerializer(data=request.data)
             #Validete the data serialized
-            serializer.is_valid(raise_exception=True)
-            #Save the new object in the database
-            serializer.save()
-            return Response({"message": "Student created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
+            if serializer.is_valid():
+                #Save the new object in the database
+                serializer.save()
+                return Response({"message": "Student created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
+            
+            return Response({"message": "Failed", "detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         except:
             return Response({"message": "Failed to create object"}, status=status.HTTP_400_BAD_REQUEST)
             
