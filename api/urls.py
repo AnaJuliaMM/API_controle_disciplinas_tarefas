@@ -16,8 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views.student import StudentView
+from .views.students.studentView import StudentView
+from .views.students.studentsDetailView import StudentDetailView
+from .views.subjects.subjectView import SubjectView
+from .views.subjects.subjectDetailView import SubjectDetailView
+
 
 urlpatterns = [
-    path('students/', StudentView.as_view())
+    path('students/', StudentView.as_view()),
+    path('students/<int:pk>/', StudentDetailView.as_view()),
+    path('subjects/', SubjectView.as_view()),
+    path('subjects/<int:pk>/', SubjectDetailView.as_view())
+
 ]
