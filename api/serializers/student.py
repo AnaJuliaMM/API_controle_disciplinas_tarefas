@@ -12,7 +12,7 @@ class StudentSerializer(serializers.ModelSerializer):
 
         It contains an internal class called Meta, that defines the model class and the fields to be serialized
     """
-    tasks = TaskSerializer(many=True, read_only=True)
+    tasks = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = StudentModel

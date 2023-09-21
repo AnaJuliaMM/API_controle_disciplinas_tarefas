@@ -9,6 +9,7 @@ class TaskSerializer(serializers.ModelSerializer):
         It contains an internal class called Meta, that defines the model class and the fields to be serialized
     """
 
+
     class Meta:
         model = TaskModel
         fields = "__all__" #fields to be serialized
