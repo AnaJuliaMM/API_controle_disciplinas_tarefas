@@ -1,5 +1,5 @@
 # API de controle de estudantes, disciplinas e tarefas
-(en) This is an API to manage students, subjects and tasks. This application allows you to control students and subjects records as well as to relate a tasks for multiple subjects and assign them to a student. [Acess the API documentation here](https://grey-meadow-639818.postman.co/documentation/29353106-1fb9f5c5-6423-4e5b-85bc-830f577e0300/publish?workspaceId=07e17786-bcd7-4d4d-8335-a39530517c4d "documentation")
+(en) This is an API to manage students, subjects and tasks. This application allows you to control students and subjects records as well as to relate tasks for multiple subjects and assign them to a student. [Acess the API documentation here](https://grey-meadow-639818.postman.co/documentation/29353106-1fb9f5c5-6423-4e5b-85bc-830f577e0300/publish?workspaceId=07e17786-bcd7-4d4d-8335-a39530517c4d "documentation")
 
 (pt-br) Esta é uma API desenvolvida para gestão de estudantes, disciplinas e tarefas acadêmicas. Através desse sistema, é possível controlar registros de estudantes e disciplinas e relacionar tarefas à essas duas entidades. 
 
@@ -45,6 +45,8 @@ Obs: Nesta versão da API, é sugerido fazer o teste via *Postman*. Portanto, o 
 2. Escolha uma pasta e uma requisição
 3. Clique em **send** e visulize a resposta no campo inferior da tela; 
 
+
+<br>
 
 ## Considerações finais
 Este arquivo fornece uma visão geral da finalidade da API e como executá-la, para mais informações a cerca dos endpoint acesse a [documentação da API](https://grey-meadow-639818.postman.co/documentation/29353106-1fb9f5c5-6423-4e5b-85bc-830f577e0300/publish?workspaceId=07e17786-bcd7-4d4d-8335-a39530517c4d "link da documentação").
