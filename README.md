@@ -49,7 +49,7 @@ Obs: Nesta versão da API, é sugerido fazer o teste via *Postman*. Portanto, o 
 <br>
 
 ## Considerações finais
-Este arquivo fornece uma visão geral da finalidade da API e como executá-la, para mais informações a cerca dos endpoint acesse a [documentação da API](https://grey-meadow-639818.postman.co/documentation/29353106-1fb9f5c5-6423-4e5b-85bc-830f577e0300/publish?workspaceId=07e17786-bcd7-4d4d-8335-a39530517c4d "link da documentação").
+Este arquivo fornece uma visão geral da finalidade da API e como executá-la, para mais informações a cerca dos endpoint acesse a [documentação da API](https://documenter.getpostman.com/view/29353106/2s9YJW4kLq "documentation").
 
 
      
