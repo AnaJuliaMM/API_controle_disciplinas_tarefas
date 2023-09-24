@@ -31,7 +31,7 @@ class SubjectView(APIView):
         #Abstracts all exception through python Exception class
         except Exception as e:
             #Retuns a error message with the error explanation 
-            return Response({"message": "Failed to create", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"message": "Failed to create the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
     
     def get(self, request, format=None):
@@ -45,9 +45,9 @@ class SubjectView(APIView):
             serializer = SubjectSerializer(subjects, many=True)
             #Returns the objects serialized and a sucess message
             return Response({"message": "All subjects returned", "data": serializer.data }, status=status.HTTP_200_OK)
-         #Abstracts all exception through python Exception class
+        #Abstracts all exception through python Exception class
         except Exception as e:
             #Retuns a error message with the error explanation 
-            return Response({"message": "Failed to create", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"message": "Failed to get objects", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
