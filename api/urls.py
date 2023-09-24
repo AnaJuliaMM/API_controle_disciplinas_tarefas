@@ -23,7 +23,7 @@ from .views.subjects.subjectDetailView import SubjectDetailView
 from .views.tasks.taskView import TaskView
 from .views.tasks.taskDetailView import TaskDetailView
 from .views.student_tasks.studentTaskView import StudentTaskView
-
+from .views.subjects_tasks.subjectTaskView import SubjectsTasksView
 
 
 urlpatterns = [
@@ -34,5 +34,5 @@ urlpatterns = [
     path('tasks/', TaskView.as_view()),
     path('tasks/<int:pk>/', TaskDetailView.as_view()),
     path('students/<int:pk>/tasks/', StudentTaskView.as_view()),
-
+    path('subjects/<int:pk>/tasks/', SubjectsTasksView.as_view()),
 ]

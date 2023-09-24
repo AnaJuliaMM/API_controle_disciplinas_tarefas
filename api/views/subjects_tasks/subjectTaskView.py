@@ -5,14 +5,14 @@ from api.models.task import TaskModel
 from api.serializers.task import TaskSerializer
 
 
-class StudentTaskView(APIView):
+class SubjectsTasksView(APIView):
     """
-    List all tasks for a given student.
+    List all tasks for a given subject.
     """
     def get(self, request, pk, format=None):
         try: 
             #Gets all tasks objects 
-            tasks = TaskModel.objects.filter(student = pk)
+            tasks = TaskModel.objects.filter(subjects = pk)
             #Serializes the objects
             serializer = TaskSerializer(tasks, many=True)
             #Returns the tasks found
