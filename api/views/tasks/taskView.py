@@ -60,7 +60,7 @@ class TaskView(APIView):
             serializer.is_valid(raise_exception=True)
             #Saves the new object in the database
             serializer.save(student=student, subjects=subjects)
-            #Returns a sucess message
+            #Returns a sucess message and the object created
             return Response({"message": "Task created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
         #Catches a exception raised in case of the object does not exist
         except Http404 as e:
@@ -68,11 +68,11 @@ class TaskView(APIView):
             return Response({"message": e.args}, status=status.HTTP_404_NOT_FOUND)
         #Catches the error raised in the serializer validation
         except ValidationError as e:
-            #Returns a dictionary with the exception name and its detail
+            #Returns a dictionary with the exception name and its detail(e.args)
             return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to create the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
     
@@ -88,7 +88,7 @@ class TaskView(APIView):
             #Returns the objects serialized and a sucess message
             return Response({"message": "All tasks returned", "data": serializer.data }, status=status.HTTP_200_OK)
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to get objects", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 

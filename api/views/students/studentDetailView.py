@@ -19,7 +19,7 @@ class StudentDetailView(APIView):
             pk(int): a value that represents the object pk
         """
         try:
-            #Gets a object by its primary key
+            #Gets a student object by its primary key
             return StudentModel.objects.get(pk=pk)
         except:
             #Raises a Http404  exception in case of object not found
@@ -40,13 +40,13 @@ class StudentDetailView(APIView):
             serializer = StudentSerializer(student)
             #Returns the object found
             return Response({"message": "Student returned sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
-        #Catches a exception raised in case of the object does not exist
+        #Catches a exception raised in case of student does not exist
         except Http404:
-            #Retuns a error message with the error explanation 
+            #Retuns the error message 
             return Response({"message": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to get object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -70,17 +70,17 @@ class StudentDetailView(APIView):
             serializer.save()
             #Returns a sucess message and the object updated
             return Response({"message": "Student updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
-       #Catches a exception raised in case of the object does not exist
+       #Catches a exception raised in case of student does not exist
         except Http404:
             #Retuns a error message with the error explanation 
             return Response({"message": "Student not  found"}, status=status.HTTP_404_NOT_FOUND)
         #Catches the error raised in the serializer validation
         except ValidationError as e:
-            #Returns a dictionary with the exception name and its detail
+            #Returns a dictionary with the exception name and its detail(e.args) 
             return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to update the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -103,17 +103,17 @@ class StudentDetailView(APIView):
             serializer.save()
             #Returns a sucess message and the object updated
             return Response({"message": "Student updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
-        #Catches a exception raised in case of the object does not exist
+        #Catches a exception raised in case of student does not exist
         except Http404:
             #Retuns a error message with the error explanation 
             return Response({"message": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
         #Catches the error raised in the serializer validation
         except ValidationError as e:
-            #Returns a dictionary with the exception name and its detail
+            #Returns a dictionary with the exception name and its detail(e.args)
             return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to update the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -135,12 +135,12 @@ class StudentDetailView(APIView):
             student.delete()
             #Returns a sucess message and the object deleted
             return Response({"message": "Student deleted sucessfully", "data": serializer}, status=status.HTTP_200_OK)
-        #Catches a exception raised in case of the object does not exist
+        #Catches a exception raised in case of student does not exist
         except Http404:
             #Retuns a error message with the error explanation 
             return Response({"message": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to delete the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 

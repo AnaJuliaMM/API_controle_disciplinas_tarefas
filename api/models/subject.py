@@ -17,7 +17,7 @@ class SubjectModel (models.Model):
     description = models.CharField(max_length=255, blank=False)
 
     class Meta:
-        #Ensures that those fields cannot have the same values together
+        #Ensures that those fields cannot have the same values together in the database
         unique_together= ['name', 'description']
 
     def __str__(self):

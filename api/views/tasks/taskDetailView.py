@@ -62,11 +62,11 @@ class TaskDetailView(APIView):
             return Response({"message": "Task returned sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
         #Catches a exception raised in case of the object does not exist
         except Http404 as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args)
             return Response({"message": e.args}, status=status.HTTP_404_NOT_FOUND)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to get object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -96,15 +96,15 @@ class TaskDetailView(APIView):
             return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
         #Catches a exception raised in case of the object does not exist
         except Http404 as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args)
             return Response({"message": e.args}, status=status.HTTP_404_NOT_FOUND)
         #Catches the error raised in the serializer validation
         except ValidationError as e:
-            #Returns a dictionary with the exception name and its detail
+            #Returns a dictionary with the exception name and its detail (e.args)
             return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to update the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -133,11 +133,11 @@ class TaskDetailView(APIView):
             return Response({"message": e.args}, status=status.HTTP_404_NOT_FOUND)
         #Catches the error raised in the serializer validation
         except ValidationError as e:
-            #Returns a dictionary with the exception name and its detail
+            #Returns a dictionary with the exception name and its detail (e.args)
             return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to update the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
           
     def delete(self, request, pk, format=None):
@@ -159,9 +159,9 @@ class TaskDetailView(APIView):
             return Response({"message": "Task deleted sucessfully", "data": serializer}, status=status.HTTP_200_OK)
         #Catches a exception raised in case of the object does not exist
         except Http404 as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args)
             return Response({"message": e.args}, status=status.HTTP_404_NOT_FOUND)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to delete the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

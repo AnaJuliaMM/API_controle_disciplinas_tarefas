@@ -15,21 +15,21 @@ class StudentView(APIView):
             Method receives a http POST request and format type and create a student object
         """
         try:
-            #Gets the data from the request and serialize it
+            #Gets the data from the request and serializes it
             serializer = StudentSerializer(data=request.data)
-            #Validates the data serialized or raise an exception of ValidantionError
+            #Validates the data serialized or raise an exception of ValidationError
             serializer.is_valid(raise_exception=True)
             #Saves the new object in the database
             serializer.save()
-            #Returns a sucess message
+            #Returns a sucess message with the object created
             return Response({"message": "Student created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
         #Catches an error raised in the serializer validation
         except ValidationError as e:
-            #Returns a dictionary with the exception name and its detail
+            #Returns a dictionary with the exception name and its detail(e.args)
             return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to create the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
     
@@ -46,7 +46,7 @@ class StudentView(APIView):
             return Response({"message": "All students returned", "data": serializer.data }, status=status.HTTP_200_OK)
         #Abstracts all exception through python Exception class
         except Exception as e:
-            #Retuns a error message with the error explanation 
+            #Retuns a error message with the error explanation (e.args) and server side code
             return Response({"message": "Failed to get objects", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
