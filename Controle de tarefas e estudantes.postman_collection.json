@@ -1,0 +1,3092 @@
+{
+	"info": {
+		"_postman_id": "1fb9f5c5-6423-4e5b-85bc-830f577e0300",
+		"name": "Controle de tarefas e estudantes",
+		"description": "Esta API permite o gerenciamento de tarefas atribuídas a estudantes em diferentes disciplinas. Ela também fornece recursos para gerenciar informações sobre estudantes e disciplinas.\n\n## Visão Geral\n\nA API é organizada em três entidades principais:\n\n1. **Estudantes:** Representa informações sobre os estudantes.\n2. **Disciplinas:** Representa informações sobre as disciplinas oferecidas.\n3. **Tarefas:** Representa as tarefas atribuídas aos estudantes em disciplinas específicas.\n    \n\n## Respostas\n\nA API responderá com JSON para todas as solicitações. Verifique a documentação de cada endpoint para obter detalhes sobre a estrutura das respostas.\n\n## Erros\n\nEm caso de erro, a API retornará uma resposta com o código de status HTTP correspondente e uma mensagem de erro descritiva.\n\nPara visualizar diferentes possiblidades de respostas referentes à erros do lado do cliente, clique em **Resposta de sucesso** ao lado de **Example Requets** na demostração de cada endpoint a seguir.\n\n(Obs: embora não demonstrados, os erros do lado do servidor também foram tratados com exibição da causa)\n\n## Endpoints Disponíveis\n\nA API oferece os seguintes endpoints:",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29353106"
+	},
+	"item": [
+		{
+			"name": "Estudante",
+			"item": [
+				{
+					"name": "Cadastrar estudante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ana Maria\",\r\n    \"email\": \"ana_maria@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint permite criar um novo registro de estudante no sistema com os parâmetros recebidos no corpo da requisição.\n\n- **Método HTTP:** POST\n- **Rota:** /api/students/\n- **Parâmetros de Entrada:** Dados do estudante (nome e email)\n- **Exemplo de Uso:** Enviar uma solicitação POST com os detalhes do estudante para criar um novo registro.\n    \n\n**Abaixo** observe um exemplo do **body** da requisição. E em seguida (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\"), observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ana Maria\",\r\n    \"email\": \"ana_maria@email.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 14:28:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "117"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Student created sucessfully\",\n    \"data\": {\n        \"id\": 1,\n        \"tasks\": [],\n        \"name\": \"Ana Maria\",\n        \"email\": \"ana_maria@email.com\"\n    }\n}"
+						},
+						{
+							"name": "Resposta de erro de validação",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 00:47:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "114"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation error\",\n    \"detail\": [\n        {\n            \"name\": [\n                \"This field is required.\"\n            ],\n            \"email\": [\n                \"This field is required.\"\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Resposta de campo de email inválido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ana Maria\",\r\n    \"email\": \"ana_mariaemail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 00:48:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation error\",\n    \"detail\": [\n        {\n            \"email\": [\n                \"Enter a valid email address.\"\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Listar estudante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint permite listar todos os estudantes registrados no sistema.\n\n- **Método HTTP:** GET\n    \n- **Rota:** /api/students/\n    \n- **Parâmetros de Entrada:** Nenhum\n    \n- **Exemplo de Uso:** Enviar uma solicitação GET para recuperar a lista de estudantes.\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 14:31:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"All students returned\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"tasks\": [],\n            \"name\": \"Ana Maria\",\n            \"email\": \"ana_maria@email.com\"\n        },\n        {\n            \"id\": 2,\n            \"tasks\": [],\n            \"name\": \"André Carlos\",\n            \"email\": \"c_andre@email.com\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar de estudante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e retorna o estudante que possui este valor como id.\n\n- **Método HTTP:** GET\n- **Rota:** /api/students/{id}/\n- **Parâmetros de Entrada:** ID do estudante\n- **Exemplo de Uso:** Enviar uma solicitação GET com o ID do estudante para obter informações detalhadas.\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 14:30:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "116"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Student return sucessfully\",\n    \"data\": {\n        \"id\": 1,\n        \"tasks\": [],\n        \"name\": \"Ana Maria\",\n        \"email\": \"ana_maria@email.com\"\n    }\n}"
+						},
+						{
+							"name": "Resposta de estudante não encontrado",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:52:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Student not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualizar estudante",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"André Carlos\",\r\n    \"email\": \"andre@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e atualiza os dados do estudante que possui este valor como ID.\n\n- **Método HTTP:** PUT\n- **Rota:** /api/students/{id}/\n- **Parâmetros de Entrada:** ID do estudante e dados atualizados (nome e email)\n- **Exemplo de Uso:** Enviar uma solicitação PUT com o ID do estudante e os dados atualizados.\n    \n\n**Abaixo** observe um exemplo do **body** da requisição. E em seguida (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\"), observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"André Carlos\",\r\n    \"email\": \"andre@email.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 14:31:59 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "117"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Student updated sucessfully\",\n    \"data\": {\n        \"id\": 1,\n        \"tasks\": [],\n        \"name\": \"André Carlos\",\n        \"email\": \"andre@email.com\"\n    }\n}"
+						},
+						{
+							"name": "Resposta de estudante não econtrado",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"André Carlos\",\r\n    \"email\": \"andre@email.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:52:55 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Student not  found\"\n}"
+						},
+						{
+							"name": "Resposta de erro de validação",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nam\": \"André Carlos\",\r\n    \"email\": \"andre@email.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:53:47 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation error\",\n    \"detail\": [\n        {\n            \"name\": [\n                \"This field is required.\"\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Deletar estudante",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e deleta o estudante que possui este valor como ID.\n\n- **Método HTTP:** DELETE\n- **Rota:** /api/students/{id}/\n- **Parâmetros de Entrada:** ID do estudante\n- **Exemplo de Uso:** Enviar uma solicitação DELETE com o ID do estudante para excluí-lo do sistema\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/2/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 14:32:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "119"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Student deleted sucessfully\",\n    \"data\": {\n        \"id\": 2,\n        \"tasks\": [],\n        \"name\": \"André Carlos\",\n        \"email\": \"c_andre@email.com\"\n    }\n}"
+						},
+						{
+							"name": "Resposta de estudante não encontrado",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:53:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Student not found\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Esta secção contém uma série de endpoints relacionados à gestão de informações de estudantes. Os endpoints aqui reunidos oferecem funcionalidades para criar, visualizar, atualizar e excluir registros de estudantes, bem como acessar informações detalhadas sobre eles."
+		},
+		{
+			"name": "Disciplina",
+			"item": [
+				{
+					"name": "Cadastrar disciplina",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"name\": \"Linguagem de Programação\",\r\n    \"description\": \"Conhecendo fundamentos da programação\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/subjects/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"subjects",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint permite cadastrar uma disciplina no sistema com os parâmetros recebidos no corpo da requisição.\n\n- **Método HTTP:** POST\n- **Rota:** /api/subjects/\n- **Parâmetros de Entrada:** Dados da disciplina (nome e descrição)\n- **Exemplo de Uso:** Enviar uma solicitação POST com os detalhes da disciplina para criar um novo registro.\n    \n\n**Abaixo** observe um exemplo do **body** da requisição. E em seguida (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\"), observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"name\": \"Desenvolvimento web\",\r\n    \"description\": \"Desenvolver aplicações backend e frontend\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:31:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "146"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Subject created sucessfully\",\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"Desenvolvimento web\",\n        \"description\": \"Desenvolver aplicações backend e frontend\"\n    }\n}"
+						},
+						{
+							"name": "Resposta de erro de validação",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 00:36:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "120"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation error\",\n    \"detail\": [\n        {\n            \"name\": [\n                \"This field is required.\"\n            ],\n            \"description\": [\n                \"This field is required.\"\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Listar disciplinas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/subjects/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"subjects",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint permite listar todas as disciplinas cadastradas no sistema.\n\n- **Método HTTP:** GET\n- **Rota:** /api/subjects/\n- **Parâmetros de Entrada:** Nenhum\n- **Exemplo de Uso:** Enviar uma solicitação GET para recuperar a lista de disciplinas.\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:31:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "382"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"All subjects returned\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Linguagem de Programação\",\n            \"description\": \"Conhecendo fundamentos da programação\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Redes de computadores\",\n            \"description\": \"Entendo a comunicação entre computadores e os protocolos que regem esse processo\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Desenvolvimento web\",\n            \"description\": \"Desenvolver aplicações backend e frontend\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar disciplina",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/subjects/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"subjects",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e retorna a disciplina que possui este valor como id.\n\n- **Método HTTP:** GET\n- **Rota:** /api/subjects/{id}/\n    \n- **Parâmetros de Entrada:** ID da disciplina\n- **Exemplo de Uso:** Enviar uma solicitação GET com o ID da disciplina para obter informações detalhadas.\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:37:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "150"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Subject returned sucessfully\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Linguagem de Programação\",\n        \"description\": \"Conhecendo fundamentos da programação\"\n    }\n}"
+						},
+						{
+							"name": "Resposta de disciplina não encontrada",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/6/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										"6",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 01:59:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualizar disciplina",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Linguagem de programação\",\r\n    \"description\": \"Entendo os fundamentos da programação e das ferramentas de desenvolvimento\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/subjects/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"subjects",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e atualiza os dados da disciplina que possui este valor como ID.\n\n- **Método HTTP:** PUT\n- **Rota:** /api/subjects/{id}/\n    \n- **Parâmetros de Entrada:** ID da disciplina e dados atualizados (nome e descrição)\n- **Exemplo de Uso:** Enviar uma solicitação PUT com o ID da disciplina e os dados atualizados.\n    \n\n**Abaixo** observe um exemplo do **body** da requisição. E em seguida (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\"), observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Linguagem de programação\",\r\n    \"description\": \"Entendo os fundamentos da programação e das ferramentas de desenvolvimento\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:38:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "186"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Subject updated sucessfully\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Linguagem de programação\",\n        \"description\": \"Entendo os fundamentos da programação e das ferramentas de desenvolvimento\"\n    }\n}"
+						},
+						{
+							"name": "Resposta de disiciplina não encontrado",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Linguagem de programação\",\r\n    \"description\": \"Entendo os fundamentos da programação e das ferramentas de desenvolvimento\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:55:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Subject not  found\"\n}"
+						},
+						{
+							"name": "Resposta de erro de validação",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Linguagem de programação\",\r\n    \"descriptin\": \"Entendo os fundamentos da programação e das ferramentas de desenvolvimento\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:40:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation error\",\n    \"detail\": [\n        {\n            \"description\": [\n                \"This field is required.\"\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Deletar disciplina",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/subjects/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"subjects",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e deleta a disciplina que possui este valor como ID.\n\n- **Método HTTP:** DELETE\n    \n- **Rota:** /api/subjects/{id}/\n    \n- **Parâmetros de Entrada:** ID da disciplina\n    \n- **Exemplo de Uso:** Enviar uma solicitação DELETE com o ID da disciplina para excluí-la do sistema\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:45:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Subject deleted sucessfully\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Linguagem de programação\",\n        \"description\": \"Entendos os fundamentos da programação e das ferramentas de desenvolvimento\"\n    }\n}"
+						},
+						{
+							"name": "Resposta de disciplina não encontrada",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/6/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										"6",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:41:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Subject not found\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Esta secção contém uma série de endpoints relacionados ao gerenciamento de disciplinas. Os endpoints aqui reunidos oferecem funcionalidades para criar novas disciplinas, recuperar informações sobre disciplinas existentes, atualizar detalhes das disciplinas e remover disciplinas quando necessário."
+		},
+		{
+			"name": "Tarefa",
+			"item": [
+				{
+					"name": "Cadastrar tarefa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\r\n        \"description\": \"api para controle de um blog\",\r\n        \"deadline\": \"2023-09-29\",\r\n        \"student\": 1,\r\n        \"subjects\": [1]\r\n        \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint permite cadastrar uma tarefa no sistema com os parâmetros recebidos no corpo da requisição.\n\n- **Método HTTP:** POST\n    \n- **Rota:** /api/tasks/\n    \n- **Parâmetros de Entrada:** Dados da tarefa(título, descrição, prazo, estudante, disciplinas)\n    \n- **Exemplo de Uso:** Enviar uma solicitação POST com os detalhes da tarefa para criar um novo registro.\n    \n\n**Abaixo** observe um exemplo do **body** da requisição. E em seguida (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\"), observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\r\n        \"description\": \"api para controle de um blog\",\r\n        \"deadline\": \"2023-09-29\",\r\n        \"student\": 1,\r\n        \"subjects\": [1]\r\n        \r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:35:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "220"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task created sucessfully\",\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n        \"description\": \"api para controle de um blog\",\n        \"deadline\": \"2023-09-29\",\n        \"done\": false,\n        \"student\": 1,\n        \"subjects\": [\n            1\n        ]\n    }\n}"
+						},
+						{
+							"name": "Resposta de erro de validação",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 01:00:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "237"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation error\",\n    \"detail\": [\n        {\n            \"title\": [\n                \"This field is required.\"\n            ],\n            \"description\": [\n                \"This field is required.\"\n            ],\n            \"deadline\": [\n                \"This field is required.\"\n            ],\n            \"student\": [\n                \"This field is required.\"\n            ],\n            \"subjects\": [\n                \"This field is required.\"\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Listar tarefas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint permite listar todas as tarefas cadastradas no sistema.\n\n- **Método HTTP:** GET\n    \n- **Rota:** /api/tasks/\n    \n- **Parâmetros de Entrada:** Nenhum\n    \n- **Exemplo de Uso:** Enviar uma solicitação GET para recuperar a lista de tarefas.\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:35:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "216"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"All tasks returned\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": false,\n            \"student\": 1,\n            \"subjects\": [\n                1\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar tarefa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e retorna a tarefa que possui este valor como id.\n\n- **Método HTTP:** GET\n    \n- **Rota:** /api/tasks/{id}/\n    \n- **Parâmetros de Entrada:** ID da tarefa\n    \n- **Exemplo de Uso:** Enviar uma solicitação GET com o ID da tarefa para obter informações detalhadas.\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:37:52 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "219"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task return sucessfully\",\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n        \"description\": \"api para controle de um blog\",\n        \"deadline\": \"2023-09-29\",\n        \"done\": false,\n        \"student\": 1,\n        \"subjects\": [\n            1\n        ]\n    }\n}"
+						},
+						{
+							"name": "Resposta de tarefa não encontrada",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 01:21:34 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualizar tarefa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\r\n        \"description\": \"api para controle de um blog\",\r\n        \"deadline\": \"2023-09-29\",\r\n        \"student\": 1,\r\n        \"subjects\": [1],\r\n        \"done\": true\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e atualiza os dados da tarefa que possui este valor como ID.\n\n- **Método HTTP:** PUT\n    \n- **Rota:** /api/tasks/{id}/\n    \n- **Parâmetros de Entrada:** ID da tarefa e dados atualizados (título,descrição, deadline, estudante, disciplinas, feito)\n    \n- **Exemplo de Uso:** Enviar uma solicitação PUT com o ID da tarefa e os dados atualizados.\n    \n\n**Abaixo** observe um exemplo do **body** da requisição. E em seguida (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\"), observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\r\n        \"description\": \"api para controle de um blog\",\r\n        \"deadline\": \"2023-09-29\",\r\n        \"student\": 1,\r\n        \"subjects\": [1],\r\n        \"done\": true\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/2/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:40:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "219"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task updated sucessfully\",\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n        \"description\": \"api para controle de um blog\",\n        \"deadline\": \"2023-09-29\",\n        \"done\": true,\n        \"student\": 1,\n        \"subjects\": [\n            1\n        ]\n    }\n}"
+						},
+						{
+							"name": "Resposta de tarefa não encontrada",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\r\n        \"description\": \"api para controle de um blog\",\r\n        \"deadline\": \"2023-09-29\",\r\n        \"student\": 1,\r\n        \"subjects\": [1],\r\n        \"done\": true\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/7/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"7",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 01:44:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task not found\"\n}"
+						},
+						{
+							"name": "Resposta de erro de validação",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\r\n        \"description\": \"api para controle de um blog\",\r\n        \"deadline\": \"2023-09-29\",\r\n        \"student\": 1,\r\n        \"subject\": [1],\r\n        \"done\": true\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 01:44:53 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation error\",\n    \"detail\": [\n        {\n            \"subjects\": [\n                \"This field is required.\"\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualizar uma tarefa parcialmente",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \r\n        \"done\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e atualiza os dados da tarefa que possui este valor como ID.\n\n- **Método HTTP:** PATCH\n    \n- **Rota:** /api/tasks/{id}/\n    \n- **Parâmetros de Entrada:** ID da tarefa e dados que serão atualizados (título,descrição, deadline, estudante, disciplinas ou feito)\n    \n- **Exemplo de Uso:** Enviar uma solicitação PUT com o ID da tarefa e os dados atualizados.\n    \n\n**Abaixo** observe um exemplo do **body** da requisição. E em seguida (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\"), observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{     \r\n        \"done\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"1",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 02:15:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "219"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task updated sucessfully\",\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n        \"description\": \"api para controle de um blog\",\n        \"deadline\": \"2023-09-29\",\n        \"done\": true,\n        \"student\": 2,\n        \"subjects\": [\n            1\n        ]\n    }\n}"
+						},
+						{
+							"name": "Resposta de tarefa não encontrada",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"done\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/7/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"7",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 01:44:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Deletar tarefa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/tasks/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e deleta a tarefa que possui este valor como ID.\n\n- **Método HTTP:** DELETE\n    \n- **Rota:** /api/tasks/{id}/\n    \n- **Parâmetros de Entrada:** ID da tarefa\n    \n- **Exemplo de Uso:** Enviar uma solicitação DELETE com o ID da tarefa para excluí-la do sistema\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/2/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:41:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "219"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task deleted sucessfully\",\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n        \"description\": \"api para controle de um blog\",\n        \"deadline\": \"2023-09-29\",\n        \"done\": true,\n        \"student\": 1,\n        \"subjects\": [\n            1\n        ]\n    }\n}"
+						},
+						{
+							"name": "Resposta de tarefa não encontrada",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 01:51:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Task not found\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Esta secção contém uma série de endpoints relacionados ao registro de tarefas. Os endpoints aqui reunidos oferecem funcionalidades para criar novas tarefas, atribuí-las à estudantes específicos, listar tarefas existentes, atualizar o status e os detalhes das tarefas, bem como excluir tarefas quando necessário."
+		},
+		{
+			"name": "Tarefas de um estudante",
+			"item": [
+				{
+					"name": "Buscar tarefas de um estudante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/students/1/tasks/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"students",
+								"1",
+								"tasks",
+								""
+							]
+						},
+						"description": "## **Descrição do endpoint**\n\nEste endpoint recebe um inteiro na url da requisição e retorna todas as tarefas atribuídas ao estudante que possui o valor recebido como id.\n\n- **Método HTTP:** GET\n    \n- **Rota:** /api/students/{id}/tasks\n    \n- **Parâmetros de Entrada:** ID do estudante\n    \n- **Exemplo de Uso:** Enviar uma solicitação GET com o ID do estudante para obter as tarefas atribuídas à ele\n    \n\nAbaixo (se você estiver no modo de visualização \"single column\") ou ao lado (modo de visualização \"double column\") observe um exemplo de uma **requisição** e a **resposta** esperada em caso de sucesso."
+					},
+					"response": [
+						{
+							"name": "Resposta de sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/1/tasks/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"1",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Sep 2023 22:42:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "176"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n        \"description\": \"api para controle de um blog\",\n        \"deadline\": \"2023-09-29\",\n        \"done\": false,\n        \"student\": 1,\n        \"subjects\": [\n            1\n        ]\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "Esta secção contém um endpoint que retorna todas as tarefas atribuídas à um estudante."
+		}
+	]
+}
