@@ -1,10 +1,8 @@
 from rest_framework.views import APIView
-from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import status
 from api.serializers.task import TaskSerializer
 from api.models.task import TaskModel
-from api.models.student import StudentModel
 from rest_framework.exceptions import ValidationError
 
 
@@ -12,18 +10,6 @@ class TaskView(APIView):
     """
         List all tasks or create a new task.
     """
-
-    def get_object(self, pk, model):
-        """
-            Return a object by its primary key
-        Args:
-            pk : a value that represents the object pk
-        """
-        try:
-            return model.objects.get(pk=pk)
-        except:
-            raise Http404
-
 
     def post(self, request, format=None):
         """
@@ -35,15 +21,13 @@ class TaskView(APIView):
             serializer = TaskSerializer(data=request.data)
             #Validates the data serialized or raise an exception of ValidantionError
             serializer.is_valid(raise_exception=True)
-            #Calls the function that gets the student object related to the task
-            student = self.get_object(request.data.get("student"), StudentModel)
             #Saves the new object in the database
-            serializer.save(student=student)
+            serializer.save()
             #Returns a sucess message
             return Response({"message": "Task created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
-        #Catches a validantion error raised in the serializer validantion
+        #Catches the error raised in the serializer validation
         except ValidationError as e:
-            #Returns a dict with the exception name and its detail
+            #Returns a dictionary with the exception name and its detail
             return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
         #Abstracts all exception through python Exception class
         except Exception as e:

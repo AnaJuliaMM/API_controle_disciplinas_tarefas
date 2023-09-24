@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views.students.studentView import StudentView
-from .views.students.studentsDetailView import StudentDetailView
+from .views.students.studentDetailView import StudentDetailView
 from .views.subjects.subjectView import SubjectView
 from .views.subjects.subjectDetailView import SubjectDetailView
 from .views.tasks.taskView import TaskView
 from .views.tasks.taskDetailView import TaskDetailView
-from .views.student_taks.studentTaskView import StudentTaskView
+from .views.student_tasks.studentTaskView import StudentTaskView
 
 
 

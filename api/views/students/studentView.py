@@ -23,9 +23,9 @@ class StudentView(APIView):
             serializer.save()
             #Returns a sucess message
             return Response({"message": "Student created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
-        #Catches a validantion error raised in the serializer validantion
+        #Catches an error raised in the serializer validation
         except ValidationError as e:
-            #Returns a dict with the exception name and its detail
+            #Returns a dictionary with the exception name and its detail
             return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
         #Abstracts all exception through python Exception class
         except Exception as e:

@@ -4,7 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from api.serializers.task import TaskSerializer
 from api.models.task import TaskModel
-from api.models.student import StudentModel
+from rest_framework.exceptions import ValidationError
+
 
 
 class TaskDetailView(APIView):
@@ -12,15 +13,17 @@ class TaskDetailView(APIView):
         Retrieve, update or delete a task instance.    
     """
 
-    def get_object(self, pk, model):
+    def get_object(self, pk):
         """
             Return a object by its primary key
         Args:
             pk : a value that represents the object pk
         """
         try:
-            return model.objects.get(pk=pk)
+            #Gets a object by its primary key
+            return TaskModel.objects.get(pk=pk)
         except:
+            #Raises a Http404  exception in case of not found
             raise Http404
         
     def get(self, request, pk, format=None):
@@ -32,15 +35,20 @@ class TaskDetailView(APIView):
 
         """
         try:
-            #Get a student by its pk and serialize it
-            task = self.get_object(pk, TaskModel)
-            #Serialize the object
+            #Calls a function that gets a student by its pk
+            task = self.get_object(pk)
+            #Serializes the object
             serializer = TaskSerializer(task)
-            # Return the object found
-            return Response({"message": "Task return sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
-        except:
-            #In case of exception, generic message printed
-            return Response({"message": "Task does not exist"}, status=status.HTTP_400_BAD_REQUEST)
+            #Returns the object found
+            return Response({"message": "Task returned sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+        #Catches a exception raised in case of the object does not exist
+        except Http404:
+            #Retuns a error message with the error explanation 
+            return Response({"message": "Task not found"}, status=status.HTTP_404_NOT_FOUND)
+        #Abstracts all exception through python Exception class
+        except Exception as e:
+            #Retuns a error message with the error explanation 
+            return Response({"message": "Failed to get object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 
@@ -53,20 +61,28 @@ class TaskDetailView(APIView):
 
         """
         try:
-            #Get a student by its pk
-            task = self.get_object(pk, TaskModel)
-            #Serielize it and update with the request data received
+            #Calls the function that gets a student by its pk
+            task = self.get_object(pk)
+            #Serializes it and update it with the request data received
             serializer = TaskSerializer(task, data=request.data)
-            #Validate the data object
-            if serializer.is_valid():
-                student = self.get_object(request.data.get("student"), StudentModel)
-                serializer.save(student=student)
-                #Return a sucess message and the object updated
-                return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
-            return Response({"message": "Failed", "detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        except:       
-            #In case of exception, generic message printed
-            return Response({"message": "Task could not be updated"}, status=status.HTTP_400_BAD_REQUEST)
+            #Validates the data object
+            serializer.is_valid(raise_exception=True)
+            #Saves the object in the database
+            serializer.save()
+            #Returns a sucess message and the object updated
+            return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+        #Catches a exception raised in case of the object does not exist
+        except Http404:
+            #Retuns a error message with the error explanation 
+            return Response({"message": "Task not  found"}, status=status.HTTP_404_NOT_FOUND)
+        #Catches the error raised in the serializer validation
+        except ValidationError as e:
+            #Returns a dictionary with the exception name and its detail
+            return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
+        #Abstracts all exception through python Exception class
+        except Exception as e:
+            #Retuns a error message with the error explanation 
+            return Response({"message": "Failed to update the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     def patch(self, request, pk, format=None):
@@ -78,21 +94,28 @@ class TaskDetailView(APIView):
 
         """
         try:
-            #Get a student by its pk
-            task = self.get_object(pk, TaskModel)
-            #Serielize it and update with the request data received
+            #Calls the function that gets a student by its pk
+            task = self.get_object(pk)
+            #Serializes it and update it with the request data received
             serializer = TaskSerializer(task, data=request.data, partial=True)
-            #Validate the data object
-            if serializer.is_valid():
-                student = self.get_object(request.data.get("student"), StudentModel)
-                serializer.save(student=student)
-                #Return a sucess message and the object updated
-                return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
-            return Response({"message": "Failed", "detail": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
-        except:       
-            #In case of exception, generic message printed
-            return Response({"message": "Task could not be updated"}, status=status.HTTP_400_BAD_REQUEST)
-
+            #Validates the data object
+            serializer.is_valid(raise_exception=True)
+            #Saves the object in the database
+            serializer.save()
+            #Returns a sucess message and the object updated
+            return Response({"message": "Task updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+        #Catches a exception raised in case of the object does not exist
+        except Http404:
+            #Retuns a error message with the error explanation 
+            return Response({"message": "Task not found"}, status=status.HTTP_404_NOT_FOUND)
+        #Catches the error raised in the serializer validation
+        except ValidationError as e:
+            #Returns a dictionary with the exception name and its detail
+            return Response({"message": "Validation error", "detail": e.args}, status=status.HTTP_400_BAD_REQUEST)
+        #Abstracts all exception through python Exception class
+        except Exception as e:
+            #Retuns a error message with the error explanation 
+            return Response({"message": "Failed to update the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
           
     def delete(self, request, pk, format=None):
         """
@@ -103,15 +126,19 @@ class TaskDetailView(APIView):
 
         """
         try:
-            #Get a student by its pk
-            subject = self.get_object(pk, TaskModel)
-            #Serielize it and update with the request data received
+            #Calls the function that gets a student by its pk
+            subject = self.get_object(pk)
+            #Serializes it 
             serializer = TaskSerializer(subject).data
-            #Validate the data object
+            #Deletes the object serialized
             subject.delete()
-            #Return a sucess message and the object updated
+            #Returns a sucess message and the object deleted
             return Response({"message": "Task deleted sucessfully", "data": serializer}, status=status.HTTP_200_OK)
-        except:       
-            #In case of exception, generic message printed
-            return Response({"message": "Task could not be deleted"}, status=status.HTTP_400_BAD_REQUEST)
-
+        #Catches a exception raised in case of the object does not exist
+        except Http404:
+            #Retuns a error message with the error explanation 
+            return Response({"message": "Task not found"}, status=status.HTTP_404_NOT_FOUND)
+        #Abstracts all exception through python Exception class
+        except Exception as e:
+            #Retuns a error message with the error explanation 
+            return Response({"message": "Failed to delete the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

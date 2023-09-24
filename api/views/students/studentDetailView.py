@@ -2,14 +2,14 @@ from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import status
-from api.serializers.subject import SubjectSerializer
-from api.models.subject import SubjectModel
+from api.serializers.student import StudentSerializer
+from api.models.student import StudentModel
 from rest_framework.exceptions import ValidationError
 
 
-class SubjectDetailView(APIView):
+class StudentDetailView(APIView):
     """
-        Retrieve, update or delete a subject instance.    
+        Retrieve, update or delete a student instance.    
     """
 
     def get_object(self, pk):
@@ -20,7 +20,7 @@ class SubjectDetailView(APIView):
         """
         try:
             #Gets a object by its primary key
-            return SubjectModel.objects.get(pk=pk)
+            return StudentModel.objects.get(pk=pk)
         except:
             #Raises a Http404  exception in case of object not found
             raise Http404
@@ -35,20 +35,19 @@ class SubjectDetailView(APIView):
         """
         try:
             #Calls the function that gets a student by its pk
-            subject = self.get_object(pk)
+            student = self.get_object(pk)
             #Serializes the object
-            serializer = SubjectSerializer(subject)
+            serializer = StudentSerializer(student)
             #Returns the object found
-            return Response({"message": "Subject returned sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            return Response({"message": "Student returned sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
         #Catches a exception raised in case of the object does not exist
         except Http404:
             #Retuns a error message with the error explanation 
-            return Response({"message": "Subject not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
         #Abstracts all exception through python Exception class
         except Exception as e:
             #Retuns a error message with the error explanation 
             return Response({"message": "Failed to get object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 
 
@@ -62,19 +61,19 @@ class SubjectDetailView(APIView):
         """
         try:
             #Calls the function that gets a student by its pk
-            subject = self.get_object(pk)
+            student = self.get_object(pk)
             #Serializes it and update it with the request data received
-            serializer = SubjectSerializer(subject, data=request.data)
+            serializer = StudentSerializer(student, data=request.data)
             #Validates the data object
             serializer.is_valid(raise_exception=True)
             #Saves the object in the database
             serializer.save()
             #Returns a sucess message and the object updated
-            return Response({"message": "Subject updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
-        #Catches a exception raised in case of the object does not exist
+            return Response({"message": "Student updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+       #Catches a exception raised in case of the object does not exist
         except Http404:
             #Retuns a error message with the error explanation 
-            return Response({"message": "Subject not  found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Student not  found"}, status=status.HTTP_404_NOT_FOUND)
         #Catches the error raised in the serializer validation
         except ValidationError as e:
             #Returns a dictionary with the exception name and its detail
@@ -95,19 +94,19 @@ class SubjectDetailView(APIView):
         """
         try:
             #Calls the function that gets a student by its pk
-            subject = self.get_object(pk)
+            student = self.get_object(pk)
             #Serializes it and update it with the request data received
-            serializer = SubjectSerializer(subject, data=request.data, partial=True)
+            serializer = StudentSerializer(student, data=request.data, partial=True)
             #Validates the data object
             serializer.is_valid(raise_exception=True)
             #Saves the object in the database
             serializer.save()
             #Returns a sucess message and the object updated
-            return Response({"message": "Subject updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
+            return Response({"message": "Student updated sucessfully", "data": serializer.data }, status=status.HTTP_200_OK)
         #Catches a exception raised in case of the object does not exist
         except Http404:
             #Retuns a error message with the error explanation 
-            return Response({"message": "Subject not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
         #Catches the error raised in the serializer validation
         except ValidationError as e:
             #Returns a dictionary with the exception name and its detail
@@ -116,6 +115,7 @@ class SubjectDetailView(APIView):
         except Exception as e:
             #Retuns a error message with the error explanation 
             return Response({"message": "Failed to update the object", "detail": e.args}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
           
     def delete(self, request, pk, format=None):
@@ -128,17 +128,17 @@ class SubjectDetailView(APIView):
         """
         try:
             #Calls the function that gets a student by its pk
-            subject = self.get_object(pk)
+            student = self.get_object(pk)
             #Serializes it 
-            serializer = SubjectSerializer(subject).data
+            serializer = StudentSerializer(student).data
             #Deletes the object serialized
-            subject.delete()
+            student.delete()
             #Returns a sucess message and the object deleted
-            return Response({"message": "Subject deleted sucessfully", "data": serializer}, status=status.HTTP_200_OK)
+            return Response({"message": "Student deleted sucessfully", "data": serializer}, status=status.HTTP_200_OK)
         #Catches a exception raised in case of the object does not exist
         except Http404:
             #Retuns a error message with the error explanation 
-            return Response({"message": "Subject not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
         #Abstracts all exception through python Exception class
         except Exception as e:
             #Retuns a error message with the error explanation 
