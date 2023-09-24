@@ -16,6 +16,10 @@ class SubjectModel (models.Model):
     name = models.CharField(max_length=150, blank=False) 
     description = models.CharField(max_length=255, blank=False)
 
+    class Meta:
+        #Ensures that those fields cannot have the same values together
+        unique_together= ['name', 'description']
+
     def __str__(self):
         #Returns a string description of the entity
         return f"{self.name} :  {self.description}"
