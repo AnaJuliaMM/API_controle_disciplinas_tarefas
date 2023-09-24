@@ -35,7 +35,7 @@ class StudentTaskView(APIView):
         #Catches a exception raised in case of the student does not exist
         except Http404:
             #Retuns a error message with the error explanation 
-            return Response({"message": "Student not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Student does not exist"}, status=status.HTTP_404_NOT_FOUND)
         #Abstracts all exception through python Exception class
         except Exception as e:
             #Retuns a error message with the error explanation 

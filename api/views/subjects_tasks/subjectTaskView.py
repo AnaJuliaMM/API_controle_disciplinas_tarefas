@@ -32,7 +32,7 @@ class SubjectsTasksView(APIView):
         #Catches a exception raised in case of the subject does not exist
         except Http404:
             #Retuns a error message with the error explanation 
-            return Response({"message": "Subject not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Subject does not exist"}, status=status.HTTP_404_NOT_FOUND)
         #Abstracts all exception through python Exception class
         except Exception as e:
             #Retuns a error message with the error explanation 
