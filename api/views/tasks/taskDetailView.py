@@ -19,7 +19,9 @@ class TaskDetailView(APIView):
         """
             Return a object by its primary key
         Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
+            model(class) : the model class
+            entity(str): a string with the object type that will be retrieved
         """
         try:
             #Gets a object by its primary key
@@ -32,7 +34,9 @@ class TaskDetailView(APIView):
         """
             Return a list of  objects by its primary keys
         Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
+            model(class) : the model class
+            entity(str): a string with the type of the object  that will be retrieved
         """
         try:
             #Gets a object by its primary key
@@ -46,7 +50,7 @@ class TaskDetailView(APIView):
             Returns a JSON of the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int)  a value that represents the object pk
 
         """
         try:
@@ -72,7 +76,7 @@ class TaskDetailView(APIView):
            Update the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:
@@ -109,7 +113,7 @@ class TaskDetailView(APIView):
            Partial update the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:
@@ -141,7 +145,7 @@ class TaskDetailView(APIView):
            Delete the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:

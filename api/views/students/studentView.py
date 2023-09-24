@@ -35,7 +35,7 @@ class StudentView(APIView):
     
     def get(self, request, format=None):
         """
-            Method receives a http POST request and format type and return all students in the database
+            Method receives a http GET request and returns all students in the database
         """
         try:
             #Gets all students objects 

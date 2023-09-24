@@ -16,7 +16,7 @@ class StudentDetailView(APIView):
         """
             Return a object by its primary key
         Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
         """
         try:
             #Gets a object by its primary key
@@ -30,7 +30,7 @@ class StudentDetailView(APIView):
             Returns a JSON of the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:
@@ -56,7 +56,7 @@ class StudentDetailView(APIView):
            Update the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:
@@ -89,7 +89,7 @@ class StudentDetailView(APIView):
            Partial update the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:
@@ -123,7 +123,7 @@ class StudentDetailView(APIView):
            Delete the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:

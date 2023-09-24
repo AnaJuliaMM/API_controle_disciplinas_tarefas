@@ -16,7 +16,7 @@ class SubjectDetailView(APIView):
         """
             Return a object by its primary key
         Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
         """
         try:
             #Gets a object by its primary key
@@ -30,7 +30,7 @@ class SubjectDetailView(APIView):
             Returns a JSON of the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:
@@ -57,7 +57,7 @@ class SubjectDetailView(APIView):
            Update the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:
@@ -90,7 +90,7 @@ class SubjectDetailView(APIView):
            Partial update the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:
@@ -123,7 +123,7 @@ class SubjectDetailView(APIView):
            Delete the object that contains the primary key handled by the url  
 
             Args:
-            pk : a value that represents the object pk
+            pk(int): a value that represents the object pk
 
         """
         try:

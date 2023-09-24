@@ -18,7 +18,7 @@ class TaskView(APIView):
 
     def get_student(self, pk):
         """
-            Return a object by its primary key
+            Return a Student object by its primary key
         Args:
             pk : a value that represents the object pk
         """
@@ -31,7 +31,7 @@ class TaskView(APIView):
         
     def get_subjects(self, pk):
         """
-            Return a list of  objects by its primary keys
+            Return a list of Subject objects by its primary keys
         Args:
             pk : a value that represents the object pk
         """
@@ -78,7 +78,7 @@ class TaskView(APIView):
     
     def get(self, request, format=None):
         """
-            Method receives a http POST request and format type and return all task in the database
+            Method receives a http GET request and returns all tasks in the database
         """
         try:
             #Gets all students objects 
