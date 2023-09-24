@@ -8,7 +8,10 @@ class TaskSerializer(serializers.ModelSerializer):
 
         It contains an internal class called Meta, that defines the model class and the fields to be serialized
     """
-
+    #Instead of printing the student's pk, prints the string set in the __str__ method
+    student = serializers.StringRelatedField(read_only=True)
+    #Instead of printing the subject's id, prints the value of the field name
+    subjects = serializers.SlugRelatedField(many=True, read_only=True, slug_field="name")
 
     class Meta:
         model = TaskModel

@@ -29,5 +29,5 @@ class TaskModel (models.Model):
 
     def __str__(self):
         #Returns a string description of the entity
-        return f"{self.title}(ddl = {self.deadline}, status = {self.done}): {self.description} "
+        return f"{self.title}(ddl = {self.deadline}, status = {self.done}): {self.description}) "
 

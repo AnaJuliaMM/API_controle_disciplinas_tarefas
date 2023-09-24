@@ -18,5 +18,5 @@ class SubjectModel (models.Model):
 
     def __str__(self):
         #Returns a string description of the entity
-        return f"Subject {self.name} :  {self.description})"
+        return f"{self.name} :  {self.description}"
 

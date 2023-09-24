@@ -18,5 +18,5 @@ class StudentModel (models.Model):
 
     def __str__(self):
         #Returns a string description of the entity
-        return f"Student {self.name} (email: {self.email})"
+        return f"{self.name} (email: {self.email})"
 

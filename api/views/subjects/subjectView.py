@@ -21,7 +21,7 @@ class SubjectView(APIView):
             #Validates the data serialized or raise an exception of ValidantionError
             serializer.is_valid(raise_exception=True)
             #Saves the new object in the database
-            serializer.is_valid(raise_exception=True)
+            serializer.save()
             #Returns a sucess message
             return Response({"message": "Subject created sucessfully", "data": serializer.data }, status=status.HTTP_201_CREATED)
         #Catches the error raised in the serializer validation
