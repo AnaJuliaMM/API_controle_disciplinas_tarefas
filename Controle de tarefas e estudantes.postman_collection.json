@@ -2886,6 +2886,78 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"id\": 3,\n        \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n        \"description\": \"api para controle de um blog\",\n        \"deadline\": \"2023-09-29\",\n        \"done\": false,\n        \"student\": 1,\n        \"subjects\": [\n            1\n        ]\n    }\n]"
+						},
+						{
+							"name": "Resposta de estudante não encontrado",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/students/1/tasks/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"students",
+										"1",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 14:13:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Student does not exist\"\n}"
 						}
 					]
 				}
@@ -2992,6 +3064,78 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"All tasks returned\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"student\": \"Ana Julia (email: ana_julia@email.com)\",\n            \"subjects\": [\n                \"Linguagem de programação\"\n            ],\n            \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": false\n        },\n        {\n            \"id\": 3,\n            \"student\": \"André Carlos (email: andre@email.com)\",\n            \"subjects\": [\n                \"Linguagem de programação\"\n            ],\n            \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": false\n        },\n        {\n            \"id\": 4,\n            \"student\": \"André Carlos (email: andre@email.com)\",\n            \"subjects\": [\n                \"Linguagem de programação\"\n            ],\n            \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": false\n        },\n        {\n            \"id\": 7,\n            \"student\": \"André Carlos (email: andre@email.com)\",\n            \"subjects\": [\n                \"Linguagem de programação\"\n            ],\n            \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": false\n        },\n        {\n            \"id\": 9,\n            \"student\": \"André Carlos (email: andre@email.com)\",\n            \"subjects\": [\n                \"Linguagem de programação\",\n                \"Redes de computadores\"\n            ],\n            \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": false\n        },\n        {\n            \"id\": 10,\n            \"student\": \"André Carlos (email: andre@email.com)\",\n            \"subjects\": [\n                \"Linguagem de programação\"\n            ],\n            \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": false\n        },\n        {\n            \"id\": 11,\n            \"student\": \"André Carlos (email: andre@email.com)\",\n            \"subjects\": [\n                \"Linguagem de programação\"\n            ],\n            \"title\": \"Desenvolver uma API de desenvolvimento de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": false\n        },\n        {\n            \"id\": 1,\n            \"student\": \"Ana Julia (email: ana_julia@email.com)\",\n            \"subjects\": [\n                \"Linguagem de programação\"\n            ],\n            \"title\": \"Desenvolver uma API de blog\",\n            \"description\": \"api para controle de um blog\",\n            \"deadline\": \"2023-09-29\",\n            \"done\": true\n        }\n    ]\n}"
+						},
+						{
+							"name": "Resposta de disciplina não encontrada",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/subjects/5/tasks/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"subjects",
+										"5",
+										"tasks",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 14:14:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Subject does not exist\"\n}"
 						}
 					]
 				}
